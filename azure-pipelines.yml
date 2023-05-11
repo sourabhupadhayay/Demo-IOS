@@ -24,11 +24,18 @@ steps:
     spotBugsAnalysis: false
 
 
-- task: AndroidSigning@3
+- task: AndroidSigning@2
   displayName: 'Signing and aligning AAB file(s) app\build\outputs\bundle\release\app-release.aab'
   inputs:
-    script: 'jarsigner -verbose -sigalg SHA256withRSA -digestalg SHA-256 -keystore /home/vsts/work/_temp/andriod-new-keystore.jks -storepass admin@123 -keypass admin@123 $(system.defaultworkingdirectory)/app/build/outputs/bundle/release/app-release.aab myapp'
-
+     apkFiles: '**/*.aab' 
+     jarsign: true 
+     jarsignerKeystoreFile: '/home/vsts/work/_temp/andriod-new-keystore.jks'
+     jarsignerKeystorePassword: 'admin@123'
+     jarsignerKeystoreAlias: 'myapp'
+     jarsignerKeyPassword: 'admin@123'
+     jarsignerArguments: '-sigalg SHA256withRSA -digestalg SHA-256'
+     zipalign: true
+  
 - task: CopyFiles@2
   inputs:
     SourceFolder: '$(system.defaultworkingdirectory)/app/build/outputs/bundle/release/'
