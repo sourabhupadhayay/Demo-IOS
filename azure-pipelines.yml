@@ -24,7 +24,7 @@ steps:
     spotBugsAnalysis: false
 
 
-- task: CmdLine@2
+- task: AndroidSigning@3
   displayName: 'Signing and aligning AAB file(s) app\build\outputs\bundle\release\app-release.aab'
   inputs:
     script: 'jarsigner -verbose -sigalg SHA256withRSA -digestalg SHA-256 -keystore $(KeyStoreFile.secureFilePath) -storepass $(StorePassword) -keypass $(KeyPassword) $(system.defaultworkingdirectory)/app/build/outputs/bundle/release/app-release.aab $(KeyStoreAlias)'
