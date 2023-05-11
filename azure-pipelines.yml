@@ -29,7 +29,7 @@ steps:
   inputs:
      apkFiles: '**/*.aab' 
      jarsign: true 
-     jarsignerKeystoreFile: '/home/vsts/work/_temp/andriod-new-keystore.jks'
+     jarsignerKeystoreFile: 'andriod-new-keystore.jks'
      jarsignerKeystorePassword: 'admin@123'
      jarsignerKeystoreAlias: 'myapp'
      jarsignerKeyPassword: 'admin@123'
