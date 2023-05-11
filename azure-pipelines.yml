@@ -16,8 +16,8 @@ steps:
 
 - task: Gradle@2
   inputs:
-    gradleWrapperFile: 'gradlew'
-    tasks: ':app:bundleRelease'
+    gradleWrapperFile: '$(Parameters.wrapperScript)'
+    tasks: ':$(Parameters.tasks)'
     publishJUnitResults: false
     javaHomeOption: 'JDKVersion'
     sonarQubeRunAnalysis: false
